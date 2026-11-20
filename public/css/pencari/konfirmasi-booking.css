@@ -1,0 +1,353 @@
+
+/* ==============================
+   HALAMAN KONFIRMASI BOOKING
+============================== */
+
+.konfirmasi-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 7%;
+    background: #ffffff;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.konfirmasi-logo {
+    color: #2166F3;
+    font-size: 23px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.konfirmasi-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.konfirmasi-nav-menu a {
+    color: #718096;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.konfirmasi-nav-menu a:hover {
+    color: #2166F3;
+}
+
+.konfirmasi-profile {
+    color: #15336F;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.konfirmasi-container {
+    width: 90%;
+    max-width: 850px;
+    margin: 45px auto;
+}
+
+/* Pesan berhasil */
+
+.konfirmasi-success {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+    background: #EAF8F0;
+    border: 1px solid #BCE8CD;
+    border-radius: 14px;
+    margin-bottom: 22px;
+}
+
+.konfirmasi-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #16A765;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.konfirmasi-success h1 {
+    margin: 0 0 6px;
+    color: #15336F;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.konfirmasi-success p {
+    margin: 0;
+    color: #527064;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Status booking */
+
+.konfirmasi-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 22px;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    margin-bottom: 22px;
+}
+
+.status-label {
+    color: #718096;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #FFF4D8;
+    color: #A66A00;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Kartu ringkasan */
+
+.konfirmasi-card {
+    padding: 28px;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+}
+
+.konfirmasi-card h2 {
+    margin: 0 0 24px;
+    color: #15336F;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.konfirmasi-kos {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.konfirmasi-kos-image,
+.konfirmasi-kos-placeholder {
+    width: 150px;
+    height: 115px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.konfirmasi-kos-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: #F4F7FF;
+    color: #718096;
+    font-size: 12px;
+    text-align: center;
+}
+
+.konfirmasi-category {
+    color: #2166F3;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.konfirmasi-kos-info h3 {
+    margin: 6px 0;
+    color: #15336F;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.konfirmasi-kos-info p {
+    margin: 0 0 8px;
+    color: #718096;
+    font-size: 13px;
+}
+
+.konfirmasi-kos-info strong {
+    color: #2166F3;
+    font-size: 14px;
+}
+
+.konfirmasi-divider {
+    height: 1px;
+    background: #E2E8F0;
+    margin: 24px 0;
+}
+
+/* Detail booking */
+
+.konfirmasi-details {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.konfirmasi-detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.konfirmasi-detail-row span {
+    color: #718096;
+    font-size: 14px;
+}
+
+.konfirmasi-detail-row strong {
+    color: #15336F;
+    font-size: 14px;
+    text-align: right;
+}
+
+/* Total harga */
+
+.konfirmasi-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.konfirmasi-total span {
+    color: #15336F;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.konfirmasi-total strong {
+    color: #2166F3;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.konfirmasi-note {
+    margin: 18px 0 0;
+    padding: 13px 15px;
+    background: #F4F7FF;
+    border-radius: 9px;
+    color: #718096;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Tombol navigasi */
+
+.konfirmasi-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.btn-kembali {
+    display: inline-block;
+    padding: 13px 22px;
+    background: #2166F3;
+    border-radius: 9px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-kembali:hover {
+    background: #15336F;
+}
+
+/* Tampilan mobile */
+
+@media (max-width: 600px) {
+    .konfirmasi-navbar {
+        padding: 15px 5%;
+    }
+
+    .konfirmasi-nav-menu {
+        gap: 12px;
+    }
+
+    .konfirmasi-nav-menu a {
+        font-size: 12px;
+    }
+
+    .konfirmasi-profile {
+        font-size: 12px;
+    }
+
+    .konfirmasi-container {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .konfirmasi-success {
+        align-items: flex-start;
+        padding: 18px;
+    }
+
+    .konfirmasi-success h1 {
+        font-size: 17px;
+    }
+
+    .konfirmasi-status {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .konfirmasi-card {
+        padding: 20px;
+    }
+
+    .konfirmasi-kos {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .konfirmasi-kos-image,
+    .konfirmasi-kos-placeholder {
+        width: 100%;
+        height: 180px;
+    }
+
+    .konfirmasi-detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .konfirmasi-detail-row strong {
+        text-align: left;
+    }
+
+    .konfirmasi-total {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .konfirmasi-total strong {
+        font-size: 21px;
+    }
+
+    .konfirmasi-actions {
+        justify-content: stretch;
+    }
+
+    .btn-kembali {
+        width: 100%;
+        text-align: center;
+    }
+}

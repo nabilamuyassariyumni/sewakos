@@ -1,0 +1,238 @@
+
+/* Container utama */
+.booking-owner-container {
+    max-width: 1150px;
+    margin: 40px auto;
+    padding: 0 24px;
+    color: #15336F;
+}
+
+/* Header */
+.booking-owner-header {
+    margin-bottom: 28px;
+}
+
+.booking-owner-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.booking-owner-header p {
+    font-size: 14px;
+    color: #718096;
+}
+
+/* Daftar booking */
+.owner-booking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.owner-booking-card {
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 22px;
+}
+
+/* Bagian atas */
+.owner-booking-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.booking-code {
+    display: block;
+    font-size: 12px;
+    color: #718096;
+    margin-bottom: 7px;
+}
+
+.owner-booking-top h3 {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* Status */
+.status {
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-menunggu {
+    background: #FFF4D6;
+    color: #A66A00;
+}
+
+.status-disetujui {
+    background: #DDF7E9;
+    color: #16834B;
+}
+
+.status-ditolak {
+    background: #FDE5E5;
+    color: #C53030;
+}
+
+/* Detail booking */
+.owner-booking-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 22px 0;
+}
+
+.owner-booking-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.owner-booking-details span,
+.owner-booking-note span {
+    color: #718096;
+    font-size: 12px;
+}
+
+.owner-booking-details strong {
+    color: #15336F;
+    font-size: 13px;
+}
+
+/* Catatan */
+.owner-booking-note {
+    padding: 14px;
+    background: #F4F7FF;
+    border-radius: 9px;
+}
+
+.owner-booking-note p {
+    color: #15336F;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* Pesan kosong */
+.empty-booking {
+    padding: 50px 20px;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.empty-booking h3 {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.empty-booking p {
+    color: #718096;
+    font-size: 14px;
+}
+
+/* Pesan berhasil */
+.alert-success {
+    background: #DDF7E9;
+    color: #16834B;
+    padding: 14px 18px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+}
+
+/* Pagination */
+.booking-pagination {
+    margin-top: 25px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .owner-booking-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .owner-booking-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-owner-container {
+        padding: 0 15px;
+        margin-top: 25px;
+    }
+
+    .owner-booking-card {
+        padding: 16px;
+    }
+
+    .owner-booking-details {
+        gap: 16px;
+    }
+}
+
+
+/* ========================================
+   TOMBOL TINDAKAN BOOKING PEMILIK
+======================================== */
+
+.booking-owner-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #E2E8F0;
+}
+
+.booking-owner-actions form {
+    flex: 1;
+}
+
+.booking-owner-actions button {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Tombol Terima */
+.btn-booking-accept {
+    background: #16A765;
+    color: #FFFFFF;
+}
+
+.btn-booking-accept:hover {
+    background: #128951;
+}
+
+/* Tombol Tolak */
+.btn-booking-reject {
+    background: #FEE2E2;
+    color: #B91C1C;
+}
+
+.btn-booking-reject:hover {
+    background: #FECACA;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 576px) {
+    .booking-owner-actions {
+        flex-direction: column;
+    }
+}
+

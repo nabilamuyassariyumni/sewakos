@@ -1,0 +1,273 @@
+
+/* ==============================
+   HALAMAN RIWAYAT BOOKING
+============================== */
+
+.riwayat-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px;
+    color: #15336F;
+}
+
+/* Navbar */
+
+.riwayat-navbar {
+    background: #ffffff;
+    min-height: 70px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.riwayat-navbar .brand {
+    color: #2166F3;
+    font-size: 23px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.riwayat-navbar .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.riwayat-navbar .nav-menu a {
+    color: #718096;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.riwayat-navbar .nav-menu a:hover,
+.riwayat-navbar .nav-menu a.active {
+    color: #2166F3;
+}
+
+/* Judul halaman */
+
+.riwayat-header {
+    margin-bottom: 30px;
+}
+
+.riwayat-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #15336F;
+    margin-bottom: 8px;
+}
+
+.riwayat-header p {
+    color: #718096;
+    font-size: 14px;
+}
+
+/* Daftar booking */
+
+.booking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.booking-card {
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* Bagian atas kartu */
+
+.booking-card-header {
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.booking-code {
+    font-size: 13px;
+    font-weight: 700;
+    color: #15336F;
+}
+
+/* Status */
+
+.status {
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-menunggu {
+    background: #FFF4D6;
+    color: #A66A00;
+}
+
+.status-disetujui {
+    background: #DDF7E9;
+    color: #16834B;
+}
+
+.status-ditolak {
+    background: #FDE5E5;
+    color: #C53030;
+}
+
+/* Isi kartu */
+
+.booking-card-body {
+    padding: 22px;
+}
+
+.booking-info h3 {
+    color: #15336F;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.booking-info > p {
+    color: #718096;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.booking-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.booking-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.booking-details span {
+    color: #718096;
+    font-size: 12px;
+}
+
+.booking-details strong {
+    color: #15336F;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Bagian bawah kartu */
+
+.booking-card-footer {
+    padding: 15px 22px;
+    background: #F8FAFF;
+    border-top: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking-card-footer span {
+    color: #718096;
+    font-size: 12px;
+}
+
+.btn-detail,
+.btn-primary {
+    display: inline-block;
+    background: #2166F3;
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.btn-detail:hover,
+.btn-primary:hover {
+    background: #15336F;
+}
+
+/* Kondisi kosong */
+
+.empty-booking {
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.empty-booking h3 {
+    color: #15336F;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.empty-booking p {
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+/* Pagination */
+
+.pagination-wrapper {
+    margin-top: 25px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .riwayat-navbar {
+        padding: 15px 20px;
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .riwayat-navbar .nav-menu {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .booking-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-card-header {
+        gap: 12px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .riwayat-container {
+        padding: 0 15px;
+        margin-top: 25px;
+    }
+
+    .riwayat-header h1 {
+        font-size: 23px;
+    }
+
+    .booking-details {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .booking-card-footer {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+    }
+}

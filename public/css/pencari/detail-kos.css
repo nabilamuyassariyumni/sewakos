@@ -1,0 +1,574 @@
+
+/* =========================================
+   DETAIL KOST - SEWAKOS
+   ========================================= */
+
+/* Pengaturan dasar halaman */
+.detail-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 24px 60px;
+    color: #15336F;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.detail-navbar {
+    width: 100%;
+    min-height: 70px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E2E8F0;
+    box-sizing: border-box;
+}
+
+.detail-logo {
+    color: #2166F3;
+    font-size: 25px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.detail-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.detail-nav-menu a,
+.detail-profile {
+    color: #15336F;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.detail-nav-menu a:hover,
+.detail-profile:hover {
+    color: #2166F3;
+}
+
+/* Breadcrumb */
+.detail-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    color: #718096;
+    font-size: 13px;
+}
+
+.detail-breadcrumb a {
+    color: #2166F3;
+    text-decoration: none;
+}
+
+/* Layout utama */
+.detail-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 310px;
+    gap: 35px;
+    align-items: start;
+}
+
+.detail-main {
+    min-width: 0;
+}
+
+/* Foto kost */
+.detail-gallery {
+    width: 100%;
+    height: 390px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #DCE9FF;
+}
+
+.detail-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #718096;
+    font-size: 15px;
+}
+
+/* Informasi utama */
+.detail-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.detail-category {
+    display: inline-block;
+    padding: 6px 13px;
+    border-radius: 20px;
+    background: #DCE9FF;
+    color: #2166F3;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.detail-heading h1 {
+    margin: 12px 0 8px;
+    color: #15336F;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.detail-address {
+    margin: 0;
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.detail-price {
+    min-width: 160px;
+    padding-top: 35px;
+    text-align: right;
+}
+
+.detail-price strong {
+    color: #2166F3;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.detail-price span {
+    color: #718096;
+    font-size: 13px;
+}
+
+/* Garis pemisah */
+.detail-divider {
+    width: 100%;
+    height: 1px;
+    margin: 25px 0;
+    background: #E2E8F0;
+}
+
+/* Bagian informasi */
+.detail-section h2 {
+    margin: 0 0 16px;
+    color: #15336F;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.detail-description {
+    margin: 0;
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* Fasilitas dan fasilitas umum menggunakan bullet */
+.detail-facility-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 35px;
+    margin: 0;
+    padding-left: 22px;
+
+    /* Memastikan bullet tetap ditampilkan */
+    list-style-type: disc;
+    list-style-position: outside;
+
+    color: #52647D;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.detail-facility-list li {
+    padding-left: 3px;
+}
+
+/* Peraturan menggunakan nomor urut */
+.detail-rule-list {
+    margin: 0;
+    padding-left: 25px;
+
+    /* Memastikan nomor urut tetap ditampilkan */
+    list-style-type: decimal;
+    list-style-position: outside;
+
+    color: #52647D;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.detail-rule-list li {
+    padding-left: 5px;
+    margin-bottom: 5px;
+}
+
+.detail-rule-list li {
+    padding-left: 5px;
+    margin-bottom: 5px;
+}
+
+.detail-empty {
+    margin: 0;
+    color: #718096;
+    font-size: 14px;
+}
+
+/* Informasi kamar */
+.detail-room-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.detail-room-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-room-info span {
+    color: #718096;
+    font-size: 13px;
+}
+
+.detail-room-info strong {
+    color: #15336F;
+    font-size: 15px;
+}
+
+/* Link Google Maps */
+.detail-map-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #2166F3;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.detail-map-link:hover {
+    text-decoration: underline;
+}
+
+/* Sidebar */
+.detail-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-sidebar-box {
+    padding: 23px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background: #FFFFFF;
+}
+
+.detail-sidebar-label {
+    color: #718096;
+    font-size: 13px;
+}
+
+.detail-sidebar-box h2 {
+    margin: 8px 0 3px;
+    color: #2166F3;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.detail-month {
+    color: #718096;
+    font-size: 13px;
+}
+
+.detail-availability {
+    margin: 20px 0;
+    padding: 9px 12px;
+    border-radius: 6px;
+    background: #EAF8F0;
+    color: #16A765;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Tombol */
+.detail-booking-button,
+.detail-contact-button {
+    width: 100%;
+    min-height: 43px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.detail-booking-button {
+    border: 1px solid #2166F3;
+    background: #2166F3;
+    color: #FFFFFF;
+}
+
+.detail-booking-button:hover {
+    background: #1554D5;
+}
+
+.detail-booking-button:disabled {
+    border-color: #CBD5E1;
+    background: #CBD5E1;
+    cursor: not-allowed;
+}
+
+.detail-contact-button {
+    margin-top: 10px;
+    border: 1px solid #2166F3;
+    background: #FFFFFF;
+    color: #2166F3;
+}
+
+.detail-contact-button:hover {
+    background: #F4F7FF;
+}
+
+/* Informasi pemilik */
+.detail-owner-box h3 {
+    margin: 0 0 18px;
+    color: #15336F;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.detail-owner-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.detail-owner-avatar {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #DCE9FF;
+    color: #2166F3;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.detail-owner-info div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-owner-info strong {
+    color: #15336F;
+    font-size: 14px;
+}
+
+.detail-owner-info span {
+    color: #718096;
+    font-size: 12px;
+}
+
+/* Footer */
+.detail-footer {
+    padding: 25px;
+    border-top: 1px solid #E2E8F0;
+    background: #FFFFFF;
+    text-align: center;
+}
+
+.detail-footer p {
+    margin: 0;
+    color: #718096;
+    font-size: 13px;
+}
+
+/* Tampilan tablet */
+@media (max-width: 900px) {
+    .detail-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+        gap: 20px;
+    }
+
+    .detail-gallery {
+        height: 320px;
+    }
+}
+
+/* Tampilan HP */
+@media (max-width: 700px) {
+    .detail-navbar {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .detail-nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .detail-container {
+        padding: 22px 18px 40px;
+    }
+
+    .detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-gallery {
+        height: 250px;
+    }
+
+    .detail-heading {
+        flex-direction: column;
+    }
+
+    .detail-heading h1 {
+        font-size: 23px;
+    }
+
+    .detail-price {
+        padding-top: 0;
+        text-align: left;
+    }
+
+    .detail-facility-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .detail-room-info {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-sidebar {
+        margin-top: 10px;
+    }
+}
+
+/* =========================================
+   DROPDOWN DURASI DAN TOTAL HARGA SEWA
+   ========================================= */
+
+/* Pembungkus pilihan durasi */
+.detail-duration {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 22px;
+}
+
+/* Label pilihan durasi */
+.detail-duration label {
+    color: #15336F;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Dropdown durasi sewa */
+.detail-duration-select {
+    width: 100%;
+    min-height: 43px;
+    padding: 0 12px;
+
+    border: 1px solid #E2E8F0;
+    border-radius: 7px;
+
+    background-color: #FFFFFF;
+    color: #15336F;
+
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+
+    outline: none;
+}
+
+/* Efek ketika dropdown dipilih */
+.detail-duration-select:focus {
+    border-color: #2166F3;
+    box-shadow: 0 0 0 3px rgba(33, 102, 243, 0.10);
+}
+
+/* Kotak total biaya */
+.detail-total-price {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-top: 17px;
+    padding: 15px;
+
+    border-radius: 8px;
+    background: #F4F7FF;
+}
+
+/* Label total biaya */
+.detail-total-price span {
+    color: #718096;
+    font-size: 12px;
+}
+
+/* Angka total biaya */
+.detail-total-price strong {
+    color: #2166F3;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Rincian perkalian harga */
+.detail-total-price small {
+    color: #718096;
+    font-size: 12px;
+}
+
+/* Notifikasi pengajuan sewa */
+.alert-success {
+    background: #E8F8EF;
+    color: #16834A;
+    border: 1px solid #B7E4C7;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.alert-error {
+    background: #FFF0F0;
+    color: #DC4545;
+    border: 1px solid #FFD0D0;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.alert-error ul {
+    padding-left: 18px;
+}

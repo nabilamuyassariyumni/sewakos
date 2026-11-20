@@ -1,0 +1,410 @@
+
+/* Container utama */
+.kos-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px;
+    color: #243247;
+}
+
+/* Judul halaman */
+.kos-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.kos-heading h1,
+.kos-form-card h1 {
+    margin: 0 0 8px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.kos-heading p,
+.kos-form-card > p {
+    margin: 0;
+    color: #718096;
+}
+
+/* Kartu data kos */
+.kos-card {
+    display: flex;
+    gap: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.kos-photo {
+    width: 240px;
+    min-height: 190px;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.kos-photo-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf4ff;
+    color: #55739b;
+    text-align: center;
+    padding: 16px;
+}
+
+.kos-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.kos-card-content h3 {
+    margin: 0 0 10px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.kos-card-content p {
+    margin: 8px 0;
+    color: #526174;
+    overflow-wrap: anywhere;
+}
+
+.kos-price {
+    color: #2456a6 !important;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+/* Tombol */
+.kos-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.kos-btn-primary {
+    background: #356ac3;
+    color: #fff;
+}
+
+.kos-btn-primary:hover {
+    background: #2855a1;
+}
+
+.kos-btn-edit {
+    background: #e0edff;
+    color: #2456a6;
+}
+
+.kos-btn-delete {
+    background: #fee2e2;
+    color: #b42318;
+}
+
+.kos-btn-secondary {
+    background: #edf0f5;
+    color: #344054;
+}
+
+.kos-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.kos-actions form {
+    margin: 0;
+}
+
+/* Status */
+.kos-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.kos-status-available {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.kos-status-unavailable {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Kondisi data kosong */
+.kos-empty {
+    padding: 50px 20px;
+    text-align: center;
+    background: #fff;
+    border: 1px dashed #b8cbe5;
+    border-radius: 14px;
+}
+
+.kos-empty h3 {
+    margin-bottom: 10px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.kos-empty p {
+    margin-bottom: 20px;
+    color: #718096;
+}
+
+/* Form tambah dan edit */
+.kos-form-card {
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.kos-form-card > p {
+    margin-bottom: 24px;
+}
+
+.kos-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 24px;
+}
+
+.kos-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.kos-field-full {
+    grid-column: 1 / -1;
+}
+
+.kos-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #344054;
+}
+
+.kos-field input,
+.kos-field select,
+.kos-field textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #243247;
+    font: inherit;
+}
+
+.kos-field input:focus,
+.kos-field select:focus,
+.kos-field textarea:focus {
+    outline: 2px solid #bfd7ff;
+    border-color: #356ac3;
+}
+
+.kos-field small {
+    color: #b42318;
+}
+
+.kos-preview {
+    width: 180px;
+    max-height: 180px;
+    margin-top: 8px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.kos-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+/* Pesan */
+.kos-alert {
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.kos-alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Tampilan HP */
+@media (max-width: 640px) {
+    .kos-container {
+        padding: 20px 14px;
+    }
+
+    .kos-card {
+        flex-direction: column;
+        padding: 14px;
+    }
+
+    .kos-photo {
+        width: 100%;
+        max-height: 230px;
+    }
+
+    .kos-form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .kos-field-full {
+        grid-column: auto;
+    }
+
+    .kos-form-card {
+        padding: 18px;
+    }
+
+    .kos-heading h1,
+    .kos-form-card h1 {
+        font-size: 22px;
+    }
+
+    .kos-form-actions .kos-btn {
+        flex: 1;
+    }
+}
+
+
+/* Status verifikasi kos */
+.verifikasi-status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.verifikasi-menunggu {
+    color: #92400e;
+    background-color: #fef3c7;
+}
+
+.verifikasi-disetujui {
+    color: #166534;
+    background-color: #dcfce7;
+}
+
+.verifikasi-ditolak {
+    color: #991b1b;
+    background-color: #fee2e2;
+}
+
+
+/* Form pengajuan booking */
+.detail-duration {
+    margin-top: 18px;
+}
+
+.detail-duration label {
+    display: block;
+    margin-bottom: 8px;
+    color: #15336F;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.detail-duration-select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #15336F;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.detail-duration-select:focus {
+    outline: none;
+    border-color: #2166F3;
+}
+
+textarea.detail-duration-select {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Pesan booking */
+.booking-alert {
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.booking-success {
+    background: #E8F8EF;
+    color: #16834A;
+}
+
+.booking-error {
+    background: #FFF0F0;
+    color: #C0392B;
+}
+
+.booking-error ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+/* Tombol booking */
+.detail-booking-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.alert-success {
+    background: #E8F8EF;
+    color: #16834A;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 13px;
+}
+
+.alert-error {
+    background: #FFF0F0;
+    color: #DC4545;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 13px;
+}

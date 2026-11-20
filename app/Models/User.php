@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable(['name', 'email', 'password', 'role'])]
 #[Hidden(['password', 'remember_token'])]
@@ -28,5 +29,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Relasi ke booking yang diajukan sebagai Pencari
+    public function bookingSebagaiPencari(): HasMany
+    {
+        return $this->hasMany(Booking::class, 'pencari_id');
+    }
+
+    // Relasi ke booking untuk kos miliknya sebagai Pemilik
+    public function bookingSebagaiPemilik(): HasMany
+    {
+        return $this->hasMany(Booking::class, 'pemilik_id');
     }
 }
