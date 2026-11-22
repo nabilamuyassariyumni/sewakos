@@ -18,6 +18,12 @@ class Booking extends Model
         'status',
         'status_pembayaran',
         'catatan',
+        // Tambahan untuk Midtrans:
+        'snap_token',
+        'midtrans_order_id',
+        'midtrans_transaction_id',
+        'payment_type',
+        'payment_url',
     ];
 
     // Mengubah tanggal mulai menjadi objek tanggal

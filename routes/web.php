@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminVerifikasiKosController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DetailKosController;
 use App\Http\Controllers\KosController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route untuk menerima notifikasi dari Midtrans (Webhook)
+Route::post('/midtrans/callback', [PaymentController::class, 'callback']);
 
 Route::middleware('auth')->group(function () {
 
@@ -62,9 +66,9 @@ Route::middleware('auth')->group(function () {
 
 
     // Halaman pembayaran booking
-    Route::get('/pencari/booking/{id}/pembayaran', [BookingController::class, 'pembayaran'])
+    Route::get('/pencari/booking/{booking}/pembayaran', [PaymentController::class, 'proses'])
         ->middleware('role:pencari')
-        ->whereNumber('id')
+        ->whereNumber('booking')
         ->name('pencari.booking.pembayaran');
 
 

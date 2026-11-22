@@ -12,7 +12,7 @@ class BookingController extends Controller
     /**
      * Menyimpan pengajuan sewa dari Pencari.
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, int $id)
     {
         // Validasi data pengajuan
         $validated = $request->validate([
@@ -72,7 +72,7 @@ class BookingController extends Controller
     /**
      * Menampilkan halaman konfirmasi booking.
      */
-    public function show($id)
+    public function show(int $id)
     {
         // Ambil booking beserta data kos dan pemilik
         $booking = Booking::with(['kos', 'pemilik'])
@@ -119,7 +119,7 @@ class BookingController extends Controller
     /**
      * Menyetujui pengajuan booking dari Pencari.
      */
-    public function terima($id)
+    public function terima(int $id)
     {
         // Cari booking milik Pemilik yang sedang login
         // dan masih berstatus menunggu.
@@ -143,7 +143,7 @@ class BookingController extends Controller
     /**
      * Menolak pengajuan booking dari Pencari.
      */
-    public function tolak($id)
+    public function tolak(int $id)
     {
         // Cari booking yang menjadi milik Pemilik yang sedang login
         // dan masih berstatus menunggu.
@@ -167,17 +167,17 @@ class BookingController extends Controller
     /**
      * Menampilkan halaman pembayaran booking.
      */
-    public function pembayaran($id)
-    {
-        // Mengambil booking milik Pencari yang sedang login.
-        $booking = Booking::with(['kos', 'pemilik'])
-            ->where('id', $id)
-            ->where('pencari_id', Auth::id())
-            ->where('status', 'disetujui')
-            ->where('status_pembayaran', 'menunggu_pembayaran')
-            ->firstOrFail();
+    // public function pembayaran(int $id)
+    // {
+    //     // Mengambil booking milik Pencari yang sedang login.
+    //     $booking = Booking::with(['kos', 'pemilik'])
+    //         ->where('id', $id)
+    //         ->where('pencari_id', Auth::id())
+    //         ->where('status', 'disetujui')
+    //         ->where('status_pembayaran', 'menunggu_pembayaran')
+    //         ->firstOrFail();
 
-        // Menampilkan halaman pembayaran.
-        return view('pencari.booking.pembayaran', compact('booking'));
-    }
+    //     // Menampilkan halaman pembayaran.
+    //     return view('pencari.booking.pembayaran', compact('booking'));
+    // }
 }

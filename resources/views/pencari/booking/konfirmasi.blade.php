@@ -136,6 +136,20 @@
 
         {{-- Tombol navigasi --}}
         <div class="konfirmasi-actions">
+            <!-- TAMBAHKAN TOMBOL INI -->
+            @if ($booking->status === 'disetujui')
+                <a href="{{ route('pencari.booking.pembayaran', $booking->id) }}" class="btn-kembali"
+                    style="background-color: #007bff; color: white; margin-bottom: 10px; display: block; text-align: center;">
+                    Lanjut ke Pembayaran
+                </a>
+            @endif
+
+            <a href="{{ route('pencari.kos.index') }}" class="btn-kembali">
+                Kembali ke Beranda
+            </a>
+        </div>
+
+        <div class="konfirmasi-actions">
             <a href="{{ route('pencari.kos.index') }}" class="btn-kembali">
                 Kembali ke Beranda
             </a>

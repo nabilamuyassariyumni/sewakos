@@ -1,4 +1,3 @@
-
 <x-app-layout>
 
     <link rel="stylesheet" href="{{ asset('css/pencari/pembayaran.css') }}">
@@ -41,7 +40,7 @@
 
             <div class="payment-detail">
                 <span>Status Pembayaran</span>
-                <strong>Menunggu Pembayaran</strong>
+                <strong>{{ ucfirst(str_replace('_', ' ', $booking->status_pembayaran)) }}</strong>
             </div>
 
             <div class="payment-total">
@@ -51,16 +50,66 @@
                 </h2>
             </div>
 
-            <button type="button" class="payment-button" disabled>
-                Pembayaran Midtrans (Segera Hadir)
-            </button>
+            @if ($booking->status_pembayaran == 'belum_ada' || $booking->status_pembayaran == 'menunggu_pembayaran')
+                <button type="button" id="pay-button" class="payment-button">
+                    Bayar Sekarang dengan Midtrans
+                </button>
+            @else
+                <button type="button" class="payment-button" disabled
+                    style="background-color: #6c757d; cursor: not-allowed;">
+                    Pembayaran Sedang Diproses / Selesai
+                </button>
+            @endif
 
-            <button type="button" class="back-button" onclick="window.location.href='{{ route('pencari.booking.show', $booking->id) }}'">
+            <button type="button" class="back-button"
+                onclick="window.location.href='{{ route('pencari.booking.show', $booking->id) }}'">
                 Kembali ke konfirmasi booking
             </button>
 
         </div>
 
     </main>
+
+    <!-- PINDAHKAN SCRIPT KE SINI, TEPAT SEBELUM TAG PENUTUP -->
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('midtrans.client_key') }}"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var payButton = document.getElementById('pay-button');
+
+            if (payButton) {
+                payButton.onclick = function() {
+                    // Cek apakah token ada
+                    var token = '{{ $booking->snap_token }}';
+
+                    if (!token || token === '') {
+                        alert('Token pembayaran tidak ditemukan. Silakan refresh halaman.');
+                        return;
+                    }
+
+                    snap.pay(token, {
+                        onSuccess: function(result) {
+                            alert("Pembayaran berhasil!");
+                            window.location.href = "{{ route('pencari.booking.index') }}";
+                        },
+                        onPending: function(result) {
+                            alert("Menunggu pembayaran Anda!");
+                            window.location.reload();
+                        },
+                        onError: function(result) {
+                            alert("Pembayaran gagal, silakan coba lagi.");
+                            window.location.reload();
+                        },
+                        onClose: function() {
+                            alert('Anda menutup pop-up tanpa menyelesaikan pembayaran.');
+                        }
+                    });
+                };
+            } else {
+                console.log("Tombol bayar tidak ditemukan di DOM.");
+            }
+        });
+    </script>
 
 </x-app-layout>
