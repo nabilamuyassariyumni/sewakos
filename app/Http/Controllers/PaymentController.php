@@ -17,23 +17,31 @@ class PaymentController extends Controller
     }
 
     // Halaman pembayaran untuk booking tertentu
-    public function proses(Booking $booking)
+    public function proses(Request $request, Booking $booking)
     {
         // 1. Keamanan
         if (Auth::id() !== $booking->pencari_id) {
             abort(403, 'Anda tidak memiliki akses ke tagihan ini.');
         }
 
-        // 2. Buat token jika belum ada
-        if (!$booking->snap_token) {
+        // Cek apakah ini percobaan ulang (retry) setelah gagal
+        $isRetry = $request->has('retry');
+
+        // 2. Buat token jika belum ada ATAU jika ini percobaan ulang
+        if (!$booking->snap_token || $isRetry) {
+
+            // Jika retry, kosongkan token lama agar dibuatkan yang baru
+            if ($isRetry) {
+                $booking->update(['snap_token' => null, 'status_pembayaran' => 'belum_ada']);
+            }
+
             $orderId = 'BOOKING-' . $booking->id . '-' . time();
 
             // Pastikan semua data berupa tipe yang benar
             $grossAmount = (int) $booking->total_harga;
-            $itemId = (string) $booking->kos_id; // Midtrans butuh string atau integer, ini aman
-            $kosName = substr(preg_replace('/[^A-Za-z0-9 ]/', '', $booking->kos->nama_kos), 0, 50); // Bersihkan karakter aneh, maks 50 char
+            $itemId = (string) $booking->kos_id;
+            $kosName = substr(preg_replace('/[^A-Za-z0-9 ]/', '', $booking->kos->nama_kos), 0, 50);
 
-            // Jika nama kos kosong setelah dibersihkan, beri nama default
             if (empty($kosName)) {
                 $kosName = 'Sewa Kos';
             }
@@ -45,7 +53,7 @@ class PaymentController extends Controller
                 ],
                 'customer_details' => [
                     'first_name' => $booking->pencari->name ?? 'Pencari',
-                    'email' => $booking->pencari->email ?? 'pencari@example.com', // Email dummy jika kosong
+                    'email' => $booking->pencari->email ?? 'pencari@example.com',
                 ],
                 'item_details' => [
                     [
@@ -66,11 +74,8 @@ class PaymentController extends Controller
                     'status_pembayaran' => 'menunggu_pembayaran',
                 ]);
             } catch (\Exception $e) {
-                // TAMPILKAN ERROR ASLI DARI MIDTRANS
-                dd([
-                    'Error Message' => $e->getMessage(),
-                    'Kemungkinan Parameter Salah' => $params,
-                ]);
+                // Kembalikan ke halaman sebelumnya dengan pesan error yang rapi
+                return redirect()->back()->with('error', 'Gagal terhubung ke Midtrans. Silakan coba beberapa saat lagi.');
             }
         }
 
@@ -87,10 +92,11 @@ class PaymentController extends Controller
         \Midtrans\Config::$isSanitized = config('midtrans.is_sanitized');
         \Midtrans\Config::$is3ds = config('midtrans.is_3ds');
 
+        // 2. Ambil notifikasi dan verifikasi keasliannya
         try {
-            // 2. Ambil notifikasi dari Midtrans dan verifikasi keasliannya
             $notif = new \Midtrans\Notification();
         } catch (\Exception $e) {
+            // Kembalikan response JSON yang bersih (tanpa debug)
             return response()->json(['message' => 'Invalid notification'], 403);
         }
 
@@ -107,13 +113,22 @@ class PaymentController extends Controller
             return response()->json(['message' => 'Booking not found'], 404);
         }
 
+        // Cegah Pemrosesan Ganda
+        if ($booking->status_pembayaran === 'berhasil' && ($transaction == 'settlement' || $transaction == 'capture')) {
+            return response()->json(['message' => 'Already processed']);
+        }
+
         // 5. Update status berdasarkan notifikasi Midtrans
         if ($transaction == 'capture') {
             if ($type == 'credit_card') {
                 if ($fraud == 'challenge') {
                     // Status masih menunggu (challenge)
                 } else {
-                    $booking->update(['status_pembayaran' => 'berhasil']);
+                    $booking->update([
+                        'status_pembayaran' => 'berhasil',
+                        'payment_type' => $type,
+                        'midtrans_transaction_id' => $notif->transaction_id,
+                    ]);
                 }
             }
         } elseif ($transaction == 'settlement') {

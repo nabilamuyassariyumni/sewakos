@@ -76,12 +76,14 @@
 
                                 <div class="booking-details">
                                     <div>
+                                        {{-- Tanggal Mulai --}}
                                         <span>Tanggal Mulai</span>
                                         <strong>
                                             {{ $booking->tanggal_mulai->format('d M Y') }}
                                         </strong>
                                     </div>
 
+                                    {{-- Durasi Sewa --}}
                                     <div>
                                         <span>Durasi Sewa</span>
                                         <strong>
@@ -89,6 +91,7 @@
                                         </strong>
                                     </div>
 
+                                    {{-- Total Harga --}}
                                     <div>
                                         <span>Total Harga</span>
                                         <strong>
@@ -96,6 +99,28 @@
                                         </strong>
                                     </div>
 
+                                    {{-- Status Pembayaran --}}
+                                    <div>
+                                        <span>Status Pembayaran</span>
+                                        <strong>
+                                            @php
+                                                $statusClass = str_replace('_', '-', $booking->status_pembayaran);
+                                                $statusLabel = match ($booking->status_pembayaran) {
+                                                    'belum_ada' => 'Belum Bayar',
+                                                    'menunggu_pembayaran' => 'Menunggu',
+                                                    'berhasil' => 'Lunas',
+                                                    'gagal' => 'Gagal',
+                                                    'kedaluwarsa' => 'Kedaluwarsa',
+                                                    default => $booking->status_pembayaran,
+                                                };
+                                            @endphp
+                                            <span class="status-pembayaran {{ $statusClass }}">
+                                                {{ $statusLabel }}
+                                            </span>
+                                        </strong>
+                                    </div>
+
+                                    {{-- Tanggal Pengajuan --}}
                                     <div>
                                         <span>Tanggal Pengajuan</span>
                                         <strong>

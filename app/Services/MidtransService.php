@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Booking;
+use Illuminate\Http\Request;
 use Midtrans\Config;
 use Midtrans\Snap;
 

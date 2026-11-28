@@ -43,8 +43,9 @@
                             </span>
                         </div>
 
+                        {{-- Detail Booking --}}
                         <div class="owner-booking-details">
-
+                            {{-- Nama Pencari --}}
                             <div>
                                 <span>Nama Pencari</span>
                                 <strong>
@@ -52,6 +53,7 @@
                                 </strong>
                             </div>
 
+                            {{-- Tanggal Mulai --}}
                             <div>
                                 <span>Tanggal Mulai</span>
                                 <strong>
@@ -59,6 +61,7 @@
                                 </strong>
                             </div>
 
+                            {{-- Durasi Sewa --}}
                             <div>
                                 <span>Durasi Sewa</span>
                                 <strong>
@@ -66,10 +69,32 @@
                                 </strong>
                             </div>
 
+                            {{-- Total Harga --}}
                             <div>
                                 <span>Total Harga</span>
                                 <strong>
                                     Rp{{ number_format($booking->total_harga, 0, ',', '.') }}
+                                </strong>
+                            </div>
+
+                            {{-- Status Pembayaran --}}
+                            <div>
+                                <span>Status Pembayaran</span>
+                                <strong>
+                                    @php
+                                        $statusClass = str_replace('_', '-', $booking->status_pembayaran);
+                                        $statusLabel = match ($booking->status_pembayaran) {
+                                            'belum_ada' => 'Belum Bayar',
+                                            'menunggu_pembayaran' => 'Menunggu',
+                                            'berhasil' => 'Lunas',
+                                            'gagal' => 'Gagal',
+                                            'kedaluwarsa' => 'Kedaluwarsa',
+                                            default => $booking->status_pembayaran,
+                                        };
+                                    @endphp
+                                    <span class="status-pembayaran {{ $statusClass }}">
+                                        {{ $statusLabel }}
+                                    </span>
                                 </strong>
                             </div>
 

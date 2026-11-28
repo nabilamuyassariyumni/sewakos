@@ -18,7 +18,22 @@ class AdminVerifikasiKosController extends Controller
         return view('admin.kos.daftar-verifikasi', compact('kos'));
     }
 
-    // Menampilkan detail kos untuk diperiksa Admin
+    // Menampilkan SEMUA kos untuk pengelolaan Admin (Poin 21 & 22)
+    public function semuaKos(Request $request)
+    {
+        $status = $request->query('status');
+        $query = Kos::with('pemilik');
+
+        if (in_array($status, ['menunggu', 'disetujui', 'ditolak'])) {
+            $query->where('status_verifikasi', $status);
+        }
+
+        $kos = $query->latest()->paginate(10)->withQueryString();
+
+        return view('admin.kos.semua-kos', compact('kos', 'status'));
+    }
+
+    // Menampilkan detail kos
     public function show($id)
     {
         $kos = Kos::with('pemilik')->findOrFail($id);
@@ -33,15 +48,8 @@ class AdminVerifikasiKosController extends Controller
         ]);
 
         $kos = Kos::findOrFail($id);
-
-        // Mengubah status verifikasi
         $kos->status_verifikasi = $request->status_verifikasi;
-
-        // Menyimpan perubahan ke database
         $kos->save();
-
-        // Memastikan perubahan berhasil
-        $kos->refresh();
 
         return redirect()
             ->route('admin.kos.index')

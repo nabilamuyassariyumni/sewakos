@@ -10,6 +10,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminTransaksiController;
+use App\Http\Controllers\PemilikDashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -78,18 +81,8 @@ Route::middleware('auth')->group(function () {
     // ==============================
 
     // Dashboard Pemilik
-    Route::get('/dashboard/pemilik', function () {
-
-        if (Auth::user()->role !== 'pemilik') {
-            return redirect()->route('dashboard');
-        }
-
-        $kos = \App\Models\Kos::where('user_id', Auth::id())
-            ->latest()
-            ->get();
-
-        return view('dashboard-pemilik', compact('kos'));
-    })->name('dashboard.pemilik');
+    Route::get('/dashboard/pemilik', [PemilikDashboardController::class, 'index'])
+        ->name('dashboard.pemilik');
 
 
     // Manajemen kos dan booking Pemilik
@@ -175,6 +168,16 @@ Route::middleware('auth')->group(function () {
             Route::patch('/kos/{id}/verifikasi', [AdminVerifikasiKosController::class, 'update'])
                 ->whereNumber('id')
                 ->name('kos.update');
+
+            // Manajemen Pengguna
+            Route::get('/user', [AdminUserController::class, 'index'])->name('user.index');
+            Route::get('/user/{user}', [AdminUserController::class, 'show'])->name('user.show');
+
+            // Pengelolaan Kos
+            Route::get('/kos-semua', [AdminVerifikasiKosController::class, 'semuaKos'])->name('kos.semua');
+
+            // Riwayat Transaksi
+            Route::get('/transaksi', [AdminTransaksiController::class, 'index'])->name('transaksi.index');
         });
 
 

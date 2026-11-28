@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Kos;
 
 #[Fillable(['name', 'email', 'password', 'role'])]
 #[Hidden(['password', 'remember_token'])]
@@ -41,5 +42,11 @@ class User extends Authenticatable
     public function bookingSebagaiPemilik(): HasMany
     {
         return $this->hasMany(Booking::class, 'pemilik_id');
+    }
+
+    // Relasi ke kos yang didaftarkan oleh Pemilik
+    public function kos(): HasMany
+    {
+        return $this->hasMany(Kos::class, 'user_id');
     }
 }

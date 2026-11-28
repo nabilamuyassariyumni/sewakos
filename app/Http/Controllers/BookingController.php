@@ -121,14 +121,11 @@ class BookingController extends Controller
      */
     public function terima(int $id)
     {
-        // Cari booking milik Pemilik yang sedang login
-        // dan masih berstatus menunggu.
         $booking = Booking::where('id', $id)
             ->where('pemilik_id', Auth::id())
             ->where('status', 'menunggu')
             ->firstOrFail();
 
-        // Ubah status booking dan status pembayaran.
         $booking->update([
             'status' => 'disetujui',
             'status_pembayaran' => 'menunggu_pembayaran',
@@ -139,25 +136,21 @@ class BookingController extends Controller
             ->with('success', 'Pengajuan booking berhasil disetujui. Silakan menunggu pembayaran dari Pencari.');
     }
 
-
     /**
      * Menolak pengajuan booking dari Pencari.
      */
     public function tolak(int $id)
     {
-        // Cari booking yang menjadi milik Pemilik yang sedang login
-        // dan masih berstatus menunggu.
         $booking = Booking::where('id', $id)
             ->where('pemilik_id', Auth::id())
             ->where('status', 'menunggu')
             ->firstOrFail();
 
-        // Ubah status booking menjadi ditolak.
         $booking->update([
             'status' => 'ditolak',
+            'status_pembayaran' => 'belum_ada', // Pastikan tidak ada pembayaran
         ]);
 
-        // Kembali ke halaman manajemen booking.
         return redirect()
             ->route('pemilik.booking.index')
             ->with('success', 'Pengajuan booking berhasil ditolak.');

@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F4F7FF;
+    color: #15336F;
+    padding: 35px;
+}
+
+/* Container */
+.container { max-width: 1200px; margin: auto; }
+h1 { margin-bottom: 8px; }
+.subtitle { color: #718096; margin-bottom: 20px; }
+
+/* Tabs */
+.tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.tab {
+    padding: 10px 16px; background: white; border: 1px solid #E2E8F0;
+    border-radius: 8px; text-decoration: none; color: #718096;
+    font-size: 13px; font-weight: 600; transition: 0.2s;
+}
+.tab:hover { border-color: #2166F3; }
+.tab.active { background: #2166F3; color: white; border-color: #2166F3; }
+.tab .badge {
+    display: inline-block; background: rgba(255,255,255,0.25);
+    padding: 2px 8px; border-radius: 20px; margin-left: 6px; font-size: 11px;
+}
+.tab:not(.active) .badge { background: #DCE9FF; color: #2166F3; }
+
+.table-container {
+    background: white; padding: 24px; border-radius: 12px;
+    border: 1px solid #E2E8F0; overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 14px; text-align: left; border-bottom: 1px solid #E2E8F0; font-size: 13px; }
+th { background: #DCE9FF; color: #15336F; }
+
+.role-badge { padding: 5px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.role-pencari { background: #DCE9FF; color: #2166F3; }
+.role-pemilik { background: #D1FAE5; color: #059669; }
+.role-admin   { background: #FEF3C7; color: #B45309; }
+
+.btn-detail {
+    display: inline-block; background: #2166F3; color: white;
+    padding: 7px 12px; border-radius: 6px; text-decoration: none; font-size: 12px;
+}
+.btn-detail:hover { background: #15336F; }
+.empty { text-align: center; color: #718096; padding: 25px; }
+.pagination { margin-top: 20px; }
+
+/* Halaman Detail */
+.back-link {
+    display: inline-block; color: #2166F3; text-decoration: none;
+    font-weight: 600; margin-bottom: 20px; font-size: 13px;
+}
+.back-link:hover { text-decoration: underline; }
+.card {
+    background: white; border-radius: 14px; padding: 30px;
+    border: 1px solid #E2E8F0;
+}
+.card h1 { font-size: 22px; margin-bottom: 4px; }
+.card .email { color: #718096; font-size: 13px; margin-bottom: 20px; }
+.detail-row {
+    display: flex; padding: 12px 0; border-bottom: 1px solid #E2E8F0; font-size: 14px;
+}
+.detail-row:last-child { border-bottom: none; }
+.detail-row .label { width: 180px; color: #718096; font-weight: 600; }
+.detail-row .value { flex: 1; font-weight: 500; }
+
+@media (max-width: 650px) {
+    .detail-row { flex-direction: column; }
+    .detail-row .label { width: 100%; margin-bottom: 5px; }
+}

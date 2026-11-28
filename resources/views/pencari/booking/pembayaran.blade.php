@@ -54,10 +54,16 @@
                 <button type="button" id="pay-button" class="payment-button">
                     Bayar Sekarang dengan Midtrans
                 </button>
+            @elseif ($booking->status_pembayaran == 'gagal')
+                <button type="button" class="payment-button"
+                    onclick="window.location.href='{{ route('pencari.booking.pembayaran', $booking->id) }}?retry=true'"
+                    style="background-color: #ff4d4f; color: white; cursor: pointer; width: 100%; border: none; padding: 12px; border-radius: 5px; font-weight: bold;">
+                    Coba Bayar Lagi
+                </button>
             @else
-                <button type="button" class="payment-button" disabled
+                <button type="button" class="payment-button"
                     style="background-color: #6c757d; cursor: not-allowed;">
-                    Pembayaran Sedang Diproses / Selesai
+                    Pembayaran Selesai
                 </button>
             @endif
 
